@@ -1,13 +1,13 @@
 # API Noticias Turtle Web
 
-###Creadores
+##Creadores
 *Daniela Diaz Gaviria
 *Sebastian Gutierrez Franco
 
-###Lenguales utilizados
+##Lenguales utilizados
 *Java script
 
-###Sistemas utilizados
+##Sistemas utilizados
 *Mongo DB
 *Express
 *Node JS
