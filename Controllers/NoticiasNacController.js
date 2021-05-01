@@ -1,0 +1,110 @@
+/**
+ * C = Create = Crear 
+ * R = Reed = Leer 
+ * U = Update = Modificar/ Actualizar
+ * D = Delete = Eliminar
+ */
+
+const NoticiaNacModel = require('../Models/NoticiaNacional')
+
+/**
+ * Metodo de creacion de las noticias NACIONALES
+ * @param {*} req => La informacion que el metodo va a recibir y guardar
+ * @param {*} res => La informacion que el usuario va a ver
+ */
+exports.create = (req, res) => { 
+    console.log('Que tiene el body', req.body)
+    const Noticia = new NoticiaNacModel({
+        NombreNoticia:req.body.NombreNoticia,
+        Date:req.body.Date,
+        Resumen:req.body.Resumen,
+        Imagen:req.body.Imagen,
+        Instruccion:req.body.Instruccion,
+        LinkNoticia:req.body.LinkNoticia,
+        LinkVideo:req.body.LinkVideo,
+        LinkTwiter:req.body.LinkTwiter,
+        LinkInstagram:req.body.LinkInstagram,
+        LinkFacebook:req.body.LinkFacebook,
+    })
+    Noticia.save().then(
+        data =>{
+            res.send(data)
+        }
+    ).catch(
+        error =>{
+            return res.status(500).send({
+                message: error.message
+            })
+        }
+    ) 
+}
+/**
+ * Metodo de actualizacion de un dato
+ * @param {*} req Informacion que el metodo recibe
+ * @param {*} res Informacion que da
+ */
+ exports.update = (req, res) => { 
+    console.log('Que tiene el body', req.body)
+    const Noticia = {
+        NombreNoticia:req.body.NombreNoticia,
+        Date:req.body.Date,
+        Resumen:req.body.Resumen,
+        Imagen:req.body.Imagen,
+        Instruccion:req.body.Instruccion,
+        LinkNoticia:req.body.LinkNoticia,
+        LinkVideo:req.body.LinkVideo,
+        LinkTwiter:req.body.LinkTwiter,
+        LinkInstagram:req.body.LinkInstagram,
+        LinkFacebook:req.body.LinkFacebook,
+    }
+ NoticiaNacModel.findByIdAndUpdate(req.params.id, Noticia, { new: true }).then(
+
+        data => {
+            res.send(data)
+        }
+    ).catch(
+        error => {
+            return res.status(500).send({
+                message: 'error al modificar la noticia'
+            })
+        }
+    )
+}
+
+/**
+ * Metodo para encontrar un dato
+ * @param {*} req Informacion que el metodo tiene que buscar
+ * @param {*} res Informacion que encuentra
+ */
+exports.findAll = (req, res) => {
+    NoticiaNacModel.find().then(
+        Noticias => {
+            res.send(Noticias)
+        }
+    ).catch(
+        error => {
+            return res.status(500).send({
+                message: 'Error al listar las noticias nacionales'
+            })
+        }
+    )
+}
+/**
+ * Metodo para borrar los datos
+ * @param {*} req  Informacion que va a eliminar 
+ * @param {*} res  Notificacion de que se realizo correctamente
+ */
+exports.deleteOne = (req, res) => {
+
+    NoticiaNacModel.findByIdAndRemove(req.params.id).then(
+        NoticiasDeleted => {
+            res.send(NoticiasDeleted)
+        }
+    ).catch(
+        error => {
+            return res.status(500).send({
+                message: 'No se elimino ninguna noticia ' + error
+            })
+        }
+    )
+}
