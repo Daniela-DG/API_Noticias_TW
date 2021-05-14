@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
- 
+const config = require('./config')
 const connectToDB = () => {
 
     mongoose.connect('mongodb://127.0.0.1:27017/NoticiasTW', { useNewUrlParser: true,
