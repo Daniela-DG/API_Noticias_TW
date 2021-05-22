@@ -16,7 +16,7 @@
     console.log('Que tiene el body', req.body)
      const SugerenciaLoc = new Sugerencias({
         Nombre: req.body.Nombre,
-        Apellido:req.body.Apellido,
+        Email:req.body.Email,
         Sugerencia:req.body.Sugerencia
      })
     SugerenciaLoc.save().then(
@@ -40,7 +40,7 @@
     console.log('Que tiene el body', req.body)
     const SugerenciaLoc ={
         Nombre: req.body.Nombre,
-        Apellido:req.body.Apellido,
+        Email:req.body.Email,
         Sugerencia:req.body.Sugerencia
     }
  Sugerencias.findByIdAndUpdate(req.params.id, SugerenciaLoc, { new: true }).then(
