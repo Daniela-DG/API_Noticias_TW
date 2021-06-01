@@ -5,7 +5,6 @@ const {connectToDB} = require ('./db')
 
 const app = express()
 
-// el la clase 1:10 para aplicarlo del dia 11/05 app.use(corse)
 app.use(cors())
 app.use(bodyParser.json())
 connectToDB()
