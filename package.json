@@ -4,7 +4,8 @@
   "description": "Por medio de esta API se realizara la actualizacion de forma sencilla de la seccion de noticias",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
   },
   "keywords": [
     "Biologia",
